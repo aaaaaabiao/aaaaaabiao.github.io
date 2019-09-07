@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="CURD攻城狮">
 <meta property="og:description" content="equals相等,hashcode就一定相等？​    “如果两个对象equals相等，那么它们的hashCode必然相等，但是hashCode相等，equals不一定相等” 真的是这样吗？ 先上段代码 1234567891011121314151617181920212223242526272829303132333435import java.util.Objects;public class">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-07T14:22:09.368Z">
+<meta property="og:updated_time" content="2019-09-07T15:36:49.598Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="equals相等,hashcode就一定相等吗？">
 <meta name="twitter:description" content="equals相等,hashcode就一定相等？​    “如果两个对象equals相等，那么它们的hashCode必然相等，但是hashCode相等，equals不一定相等” 真的是这样吗？ 先上段代码 1234567891011121314151617181920212223242526272829303132333435import java.util.Objects;public class">
@@ -367,18 +367,20 @@
 </li>
 </ol>
 <p>所以他俩完全没有约束关系啊！！！</p>
-<h3 id="当在使用HashSet，HashMap等容器的时候，需要重写他俩时，那么这时候需要有一点点约束了。"><a href="#当在使用HashSet，HashMap等容器的时候，需要重写他俩时，那么这时候需要有一点点约束了。" class="headerlink" title="当在使用HashSet，HashMap等容器的时候，需要重写他俩时，那么这时候需要有一点点约束了。"></a>当在使用HashSet，HashMap等容器的时候，需要重写他俩时，那么这时候需要有一点点约束了。</h3><p>​    这类容器在添加或获取对象的时候，会用到hashcode函数和equals函数</p>
-<p>​    简单来说就是：先通过对象的hashcode值定位到<strong>数组的下标位置</strong>, 再通过equals<strong>比较是否有相同的对象</strong>。</p>
-<p><strong>这类容器的使用规则是：多个对象的equals相等，那么只能有一个存在容器中</strong></p>
-<p>所以两个对象的equals不相等，那么他们肯定都能添加到容器中。</p>
-<blockquote>
-<p> 同一内存地址的对象，他们的hashcode和equals都相等。</p>
-<p> 重写他们的目的就是，让不同内存地址的同一对象的实例hashcode和equals相等</p>
-</blockquote>
+<h3 id="当在使用HashSet，HashMap等容器的时候，需要重写他俩时，那么这时候需要有一点点约束了。"><a href="#当在使用HashSet，HashMap等容器的时候，需要重写他俩时，那么这时候需要有一点点约束了。" class="headerlink" title="当在使用HashSet，HashMap等容器的时候，需要重写他俩时，那么这时候需要有一点点约束了。"></a>当在使用HashSet，HashMap等容器的时候，需要重写他俩时，那么这时候需要有一点点约束了。</h3><p>​    这类容器在添加或获取对象的时候，有两个步骤</p>
+<ol>
+<li>先通过对象的hashcode值定位到<strong>数组的下标位置</strong></li>
+<li>再通过equals<strong>比较是否有相同的对象</strong>。</li>
+</ol>
 <p><strong>当重写equals的时候，而不去重写hashcode。这样会导致什么后果呢？</strong></p>
-<p><strong>后果就是：两个equals相等对象，都能添加到容器中去。这并不是这类容器想要的结果。</strong></p>
+<p><strong>后果就是：两个equal相等的对象，都能同时添加到这类容器中，肯定不是这类容器的正确使用方法。</strong></p>
+<blockquote>
+<p>为什么能同时添加，因为hashcode不相等，桶的下标位置不相等。第一步就把他俩隔开了</p>
+</blockquote>
 <p><strong>解决方案：就是重写hashcode，让equasl相等的两个对象，hashcode也相等</strong>。<strong>这个就是约束所在</strong></p>
-<h1 id="这个才是中心思想。就开始那句话的大前提是在这呢"><a href="#这个才是中心思想。就开始那句话的大前提是在这呢" class="headerlink" title="这个才是中心思想。就开始那句话的大前提是在这呢!!!"></a>这个才是中心思想。就开始那句话的大前提是在这呢!!!</h1>
+<p>所以上述的说法应该所的严谨一点：</p>
+<p><strong><em>当我们使用HashMap这类容器的时候，需要重写对象的equals方法，同时应该要重写hashcode。</em></strong></p>
+
       
     </div>
     
@@ -548,7 +550,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#equals相等-hashcode就一定相等？"><span class="nav-number">1.</span> <span class="nav-text">equals相等,hashcode就一定相等？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#当在使用HashSet，HashMap等容器的时候，需要重写他俩时，那么这时候需要有一点点约束了。"><span class="nav-number">2.</span> <span class="nav-text">当在使用HashSet，HashMap等容器的时候，需要重写他俩时，那么这时候需要有一点点约束了。</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#这个才是中心思想。就开始那句话的大前提是在这呢"><span class="nav-number"></span> <span class="nav-text">这个才是中心思想。就开始那句话的大前提是在这呢!!!</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#equals相等-hashcode就一定相等？"><span class="nav-number">1.</span> <span class="nav-text">equals相等,hashcode就一定相等？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#当在使用HashSet，HashMap等容器的时候，需要重写他俩时，那么这时候需要有一点点约束了。"><span class="nav-number">2.</span> <span class="nav-text">当在使用HashSet，HashMap等容器的时候，需要重写他俩时，那么这时候需要有一点点约束了。</span></a></li></ol></div>
             
 
           </div>
