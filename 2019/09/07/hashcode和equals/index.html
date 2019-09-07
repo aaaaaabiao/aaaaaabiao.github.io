@@ -79,15 +79,18 @@
 
 
 
+<meta name="description" content="equals相等,hashcode就一定相等？​    “如果两个对象equals相等，那么它们的hashCode必然相等，但是hashCode相等，equals不一定相等” 真的是这样吗？ 先上段代码 1234567891011121314151617181920212223242526272829303132333435import java.util.Objects;public class">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hashcode和equals">
+<meta property="og:title" content="equals相等,hashcode就一定相等吗？">
 <meta property="og:url" content="http://yoursite.com/2019/09/07/hashcode和equals/index.html">
 <meta property="og:site_name" content="CURD攻城狮">
+<meta property="og:description" content="equals相等,hashcode就一定相等？​    “如果两个对象equals相等，那么它们的hashCode必然相等，但是hashCode相等，equals不一定相等” 真的是这样吗？ 先上段代码 1234567891011121314151617181920212223242526272829303132333435import java.util.Objects;public class">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-07T11:58:13.099Z">
+<meta property="og:updated_time" content="2019-09-07T14:22:09.368Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hashcode和equals">
+<meta name="twitter:title" content="equals相等,hashcode就一定相等吗？">
+<meta name="twitter:description" content="equals相等,hashcode就一定相等？​    “如果两个对象equals相等，那么它们的hashCode必然相等，但是hashCode相等，equals不一定相等” 真的是这样吗？ 先上段代码 1234567891011121314151617181920212223242526272829303132333435import java.util.Objects;public class">
 
 
 
@@ -123,7 +126,7 @@
 
 
 
-  <title>hashcode和equals | CURD攻城狮</title>
+  <title>equals相等,hashcode就一定相等吗？ | CURD攻城狮</title>
   
 
 
@@ -267,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hashcode和equals</h1>
+          <h1 class="post-title" itemprop="name headline">equals相等,hashcode就一定相等吗？</h1>
         
 
         <div class="post-meta">
@@ -339,7 +342,43 @@
       
 
       
-        
+        <h3 id="equals相等-hashcode就一定相等？"><a href="#equals相等-hashcode就一定相等？" class="headerlink" title="equals相等,hashcode就一定相等？"></a>equals相等,hashcode就一定相等？</h3><p>​    <strong>“如果两个对象equals相等，那么它们的hashCode必然相等，但是hashCode相等，equals不一定相等”</strong></p>
+<p><strong>真的是这样吗？</strong></p>
+<p>先上段代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Objects;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashCodeAndEqual</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Obj</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> a;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Obj</span><span class="params">(<span class="keyword">int</span> a)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.a = a;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (obj == <span class="keyword">this</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> Obj) &#123;</span><br><span class="line">                Obj o = (Obj)obj;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">this</span>.a != o.a) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Obj o1 = <span class="keyword">new</span> Obj(<span class="number">1</span>);</span><br><span class="line">        Obj o2 = <span class="keyword">new</span> Obj(<span class="number">1</span>);</span><br><span class="line">        System.out.println(o1.hashCode());</span><br><span class="line">        System.out.println(o2.hashCode());</span><br><span class="line">        System.out.println(o1.equals(o2));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line"><span class="number">1528902577</span></span><br><span class="line"><span class="number">1927950199</span></span><br><span class="line"><span class="keyword">true</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>很明显不符合上述的结论</strong></p>
+<p><strong>先说结论：两个对象的equals是否相等，对于他们hashcode值是否相等完全没有影响。</strong></p>
+<p><strong>为什么呢？</strong></p>
+<p><strong>hashcode的值生成由两种方式</strong></p>
+<ol>
+<li><p>如果不重写，则由JVM生成(Object的hashcode方法)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果重写就按我们重写方法生成</p>
+</li>
+</ol>
+<p><strong>equals是否相等由两个方面决定</strong></p>
+<ol>
+<li><p>不重写，Object默认方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (<span class="keyword">this</span> == obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重写就按照我们重写方法来决定</p>
+</li>
+</ol>
+<p>所以他俩完全没有约束关系啊！！！</p>
+<h3 id="当在使用HashSet，HashMap等容器的时候，需要重写他俩时，那么这时候需要有一点点约束了。"><a href="#当在使用HashSet，HashMap等容器的时候，需要重写他俩时，那么这时候需要有一点点约束了。" class="headerlink" title="当在使用HashSet，HashMap等容器的时候，需要重写他俩时，那么这时候需要有一点点约束了。"></a>当在使用HashSet，HashMap等容器的时候，需要重写他俩时，那么这时候需要有一点点约束了。</h3><p>​    这类容器在添加或获取对象的时候，会用到hashcode函数和equals函数</p>
+<p>​    简单来说就是：先通过对象的hashcode值定位到<strong>数组的下标位置</strong>, 再通过equals<strong>比较是否有相同的对象</strong>。</p>
+<p><strong>这类容器的使用规则是：多个对象的equals相等，那么只能有一个存在容器中</strong></p>
+<p>所以两个对象的equals不相等，那么他们肯定都能添加到容器中。</p>
+<blockquote>
+<p> 同一内存地址的对象，他们的hashcode和equals都相等。</p>
+<p> 重写他们的目的就是，让不同内存地址的同一对象的实例hashcode和equals相等</p>
+</blockquote>
+<p><strong>当重写equals的时候，而不去重写hashcode。这样会导致什么后果呢？</strong></p>
+<p><strong>后果就是：两个equals相等对象，都能添加到容器中去。这并不是这类容器想要的结果。</strong></p>
+<p><strong>解决方案：就是重写hashcode，让equasl相等的两个对象，hashcode也相等</strong>。<strong>这个就是约束所在</strong></p>
+<h1 id="这个才是中心思想。就开始那句话的大前提是在这呢"><a href="#这个才是中心思想。就开始那句话的大前提是在这呢" class="headerlink" title="这个才是中心思想。就开始那句话的大前提是在这呢!!!"></a>这个才是中心思想。就开始那句话的大前提是在这呢!!!</h1>
       
     </div>
     
@@ -429,8 +468,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -490,6 +538,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#equals相等-hashcode就一定相等？"><span class="nav-number">1.</span> <span class="nav-text">equals相等,hashcode就一定相等？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#当在使用HashSet，HashMap等容器的时候，需要重写他俩时，那么这时候需要有一点点约束了。"><span class="nav-number">2.</span> <span class="nav-text">当在使用HashSet，HashMap等容器的时候，需要重写他俩时，那么这时候需要有一点点约束了。</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#这个才是中心思想。就开始那句话的大前提是在这呢"><span class="nav-number"></span> <span class="nav-text">这个才是中心思想。就开始那句话的大前提是在这呢!!!</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
