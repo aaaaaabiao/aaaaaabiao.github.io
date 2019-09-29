@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="CURD攻城狮">
 <meta property="og:description" content="equals相等,hashcode就一定相等？​    “如果两个对象equals相等，那么它们的hashCode必然相等，但是hashCode相等，equals不一定相等” 真的是这样吗？ 先上段代码 1234567891011121314151617181920212223242526272829303132333435import java.util.Objects;public class">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-07T15:36:49.598Z">
+<meta property="og:updated_time" content="2019-09-07T15:37:28.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="equals相等,hashcode就一定相等吗？">
 <meta name="twitter:description" content="equals相等,hashcode就一定相等？​    “如果两个对象equals相等，那么它们的hashCode必然相等，但是hashCode相等，equals不一定相等” 真的是这样吗？ 先上段代码 1234567891011121314151617181920212223242526272829303132333435import java.util.Objects;public class">
@@ -420,6 +420,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/09/15/lucene基本概念/" rel="prev" title="lucene基本概念">
+                lucene基本概念 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -495,7 +499,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -740,6 +744,27 @@
 
 
 
+
+  <!-- gitalk.swig -->
+<link href="https://cdn.bootcss.com/gitalk/1.4.0/gitalk.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/gitalk/1.4.0/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'e44a515c1c587bdec329',
+    clientSecret: '4f4b01e5a84a022ab173cd0c25353a31a9d9a9b3',
+    repo: 'gitment-comments',
+    owner: 'aaaaaabiao',
+    admin: ['aaaaaabiao'],
+    id: md5(location.pathname),   // ISSUE：location.href 限制50个字符 (应该是Issue 内容存数据库的标识， 具体在页面上无感)
+    labels: 'gitalk'.split(',').filter(l => l),  // 需要的 labels需要一个数组，否则会报错
+    perPage: 15,
+    pagerDirection: 'last',
+    createIssueManually: false,
+    distractionFreeMode: false
+  })
+  gitalk.render('gitalk-container')
+</script>
 
   
 

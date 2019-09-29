@@ -79,13 +79,19 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="CURD攻城狮">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="介绍Apache Lucene是一个开源的高性能、可扩展的信息检索引擎，提供了强大的数据检索能力。 基于Lucene的开源项目有很多，最知名的要属Elasticsearch和Solr。 基本概念 lucene类比数据库    Lucene 数据库    index(索引) 表   Document(文档) 行   Field(字段) 项   一个索引包含很多文档，一个文档包含很多字段。Field是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lucene基本概念">
+<meta property="og:url" content="http://yoursite.com/2019/09/15/lucene基本概念/index.html">
 <meta property="og:site_name" content="CURD攻城狮">
+<meta property="og:description" content="介绍Apache Lucene是一个开源的高性能、可扩展的信息检索引擎，提供了强大的数据检索能力。 基于Lucene的开源项目有很多，最知名的要属Elasticsearch和Solr。 基本概念 lucene类比数据库    Lucene 数据库    index(索引) 表   Document(文档) 行   Field(字段) 项   一个索引包含很多文档，一个文档包含很多字段。Field是">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-89d424acd24ab21954774b9391353ca5_hd.jpg">
+<meta property="og:updated_time" content="2019-09-15T03:56:33.224Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CURD攻城狮">
+<meta name="twitter:title" content="lucene基本概念">
+<meta name="twitter:description" content="介绍Apache Lucene是一个开源的高性能、可扩展的信息检索引擎，提供了强大的数据检索能力。 基于Lucene的开源项目有很多，最知名的要属Elasticsearch和Solr。 基本概念 lucene类比数据库    Lucene 数据库    index(索引) 表   Document(文档) 行   Field(字段) 项   一个索引包含很多文档，一个文档包含很多字段。Field是">
+<meta name="twitter:image" content="https://pic2.zhimg.com/80/v2-89d424acd24ab21954774b9391353ca5_hd.jpg">
 
 
 
@@ -115,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/15/lucene基本概念/">
 
 
 
 
 
-  <title>CURD攻城狮</title>
+  <title>lucene基本概念 | CURD攻城狮</title>
   
 
 
@@ -140,8 +146,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -234,9 +239,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -266,9 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/15/lucene基本概念/" itemprop="url">lucene基本概念</a></h1>
+          <h1 class="post-title" itemprop="name headline">lucene基本概念</h1>
         
 
         <div class="post-meta">
@@ -318,34 +321,37 @@
       
 
       
-        
-          
-          介绍Apache Lucene是一个开源的高性能、可扩展的信息检索引擎，提供了强大的数据检索能力。
-基于Lucene的开源项目有很多，最知名的要属Elasticsearch和Solr。
-基本概念
-lucene类比数据库
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Apache Lucene是一个<strong>开源的高性能、可扩展的信息检索引擎</strong>，提供了强大的数据检索能力。</p>
+<p>基于Lucene的开源项目有很多，最知名的要属<strong>Elasticsearch和Solr</strong>。</p>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p><img src="https://pic2.zhimg.com/80/v2-89d424acd24ab21954774b9391353ca5_hd.jpg" alt="v2-89d424acd24ab21954774b9391353ca5_hd"></p>
+<p><strong>lucene类比数据库</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">Lucene</th>
+<th align="left">数据库</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">index(索引)</td>
+<td align="left">表</td>
+</tr>
+<tr>
+<td align="left">Document(文档)</td>
+<td align="left">行</td>
+</tr>
+<tr>
+<td align="left">Field(字段)</td>
+<td align="left">项</td>
+</tr>
+</tbody></table>
+<p><strong>一个索引包含很多文档，一个文档包含很多字段。Field是数据索引的最小定位单位</strong></p>
+<p><strong>Term和Term Dictionary</strong></p>
+<p>​    Term是Field进过分词产生的,Term Dictionary即为Term词典(Term的文档的DocId列表的映射),也就是倒排索引。Term可以说是Lucene搜索的最小单位。</p>
+<p>​    Lucene内最核心的倒排索引，本质上就是Term到所有包含该Term的文档的DocId列表的映射。所以Lucene内部在搜索的时候会是一个两阶段的查询，第一阶段是通过给定的Term的条件找到所有Doc的DocId列表，第二阶段是根据DocId查找Doc。Lucene提供基于Term的搜索功能，也提供基于DocId的查询功能。</p>
+<p><strong>Segement</strong></p>
+<p>​    一个Index会由一个或多个sub-index构成，<strong>sub-index被称为Segment</strong>。如上图所示，Lucene中的数据写入会先写内存的一个Buffer，当Buffer内数据到一定量后会被flush成一个Segment。</p>
 
-
-
-Lucene
-数据库
-
-
-
-index(索引)
-表
-
-
-Document(
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/15/lucene基本概念/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
       
     </div>
     
@@ -362,163 +368,28 @@ Document(
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/07/hashcode和equals/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CURD工程师">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CURD攻城狮">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/07/hashcode和equals/" itemprop="url">equals相等,hashcode就一定相等吗？</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-07T19:56:00+08:00">
-                2019-09-07
-              </time>
+              <a href="/2019/09/07/hashcode和equals/" rel="next" title="equals相等,hashcode就一定相等吗？">
+                <i class="fa fa-chevron-left"></i> equals相等,hashcode就一定相等吗？
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java基础/" itemprop="url" rel="index">
-                    <span itemprop="name">java基础</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-          equals相等,hashcode就一定相等？​    “如果两个对象equals相等，那么它们的hashCode必然相等，但是hashCode相等，equals不一定相等”
-真的是这样吗？
-先上段代码
-123456789101112131415161718192021222324252627282
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/09/07/hashcode和equals/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -528,158 +399,11 @@ Document(
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/15/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CURD工程师">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CURD攻城狮">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/15/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-15T11:47:09+08:00">
-                2019-06-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/教程/" itemprop="url" rel="index">
-                    <span itemprop="name">教程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/06/15/hello-world/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -687,6 +411,10 @@ Document(
 
 
           
+
+  
+
+
 
         </div>
         
@@ -707,8 +435,17 @@ Document(
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -768,6 +505,22 @@ Document(
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">2.</span> <span class="nav-text">基本概念</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -908,6 +661,10 @@ Document(
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
